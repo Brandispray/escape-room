@@ -16,6 +16,10 @@ body {
     text-align: center;
 }
 
+.puzzle {
+    margin-bottom: 20px;
+}
+
 input, button {
     padding: 10px;
     margin: 10px 0;
@@ -24,4 +28,14 @@ input, button {
 #result {
     margin-top: 10px;
     font-weight: bold;
+}
+
+#timer {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.hint {
+    font-style: italic;
+    color: #555;
 }
