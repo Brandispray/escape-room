@@ -1,19 +1,48 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const puzzleElement = document.getElementById("puzzle");
-    puzzleElement.innerHTML = `
-        <p>You are locked in a room. Solve the riddle to find the key:</p>
-        <p>"I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?"</p>
-    `;
+    updateTimer();
 });
 
-function checkAnswer() {
-    const answer = document.getElementById("answer").value.toLowerCase();
-    const resultElement = document.getElementById("result");
-    if (answer === "echo") {
-        resultElement.textContent = "Correct! You found the key and escaped!";
+function checkAnswer1() {
+    const answer = document.getElementById("answer1").value.toLowerCase();
+    const resultElement = document.getElementById("result1");
+    if (answer === "piano") {
+        resultElement.textContent = "Correct! Proceed to the next puzzle.";
+        resultElement.style.color = "green";
+        document.getElementById("puzzle2").style.display = "block";
+    } else {
+        resultElement.textContent = "Wrong answer. Try again!";
+        resultElement.style.color = "red";
+    }
+}
+
+function checkAnswer2() {
+    const answer = document.getElementById("answer2").value.toLowerCase();
+    const resultElement = document.getElementById("result2");
+    if (answer === "22") {
+        resultElement.textContent = "Correct! You've completed the escape room!";
         resultElement.style.color = "green";
     } else {
         resultElement.textContent = "Wrong answer. Try again!";
         resultElement.style.color = "red";
+    }
+}
+
+function showHint1() {
+    document.getElementById("hint1").style.display = "block";
+}
+
+let timeLeft = 600; // 10 minutes in seconds
+const timerElement = document.getElementById("time");
+
+function updateTimer() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    timeLeft--;
+    if (timeLeft < 0) {
+        alert("Time's up! Try again.");
+        // Optionally reset the game or stop further actions
+    } else {
+        setTimeout(updateTimer, 1000);
     }
 }
