@@ -53,6 +53,14 @@ function checkAnswers() {
         setTimeout(() => {
             window.location.href = "riddle.html"; // Next activity
         }, 2000);
+
+        // Backup navigation button
+        const nextButton = document.createElement("button");
+        nextButton.textContent = "Next";
+        nextButton.onclick = () => {
+            window.location.href = "riddle.html";
+        };
+        resultDiv.appendChild(nextButton);
     } else {
         resultDiv.textContent = `Incorrect answers for question(s): ${incorrectQuestions.join(", ")}. Try again!`;
         resultDiv.style.color = "red";
