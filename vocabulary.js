@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     const terms = ["Simile", "Metaphor", "Personification", "Hyperbole", "Idiom", "Onomatopoeia"];
     const definitions = [
-        "A comparison using 'like' or 'as'. (Example: 'As brave as a lion.')",
-        "A direct comparison between two things. (Example: 'The classroom was a zoo.')",
-        "Giving human qualities to non-human things. (Example: 'The wind whispered through the trees.')",
-        "Exaggeration for effect. (Example: 'I'm so hungry I could eat a horse.')",
-        "A phrase with a meaning different from the literal meaning. (Example: 'Break the ice.')",
-        "A word that imitates a sound. (Example: 'Buzz,' 'Splash.')"
+        "1. A comparison using 'like' or 'as'. (Example: 'As brave as a lion.')",
+        "2. A direct comparison between two things. (Example: 'The classroom was a zoo.')",
+        "3. Giving human qualities to non-human things. (Example: 'The wind whispered through the trees.')",
+        "4. Exaggeration for effect. (Example: 'I'm so hungry I could eat a horse.')",
+        "5. A phrase with a meaning different from the literal meaning. (Example: 'Break the ice.')",
+        "6. A word that imitates a sound. (Example: 'Buzz,' 'Splash.')"
     ];
 
     const activityContainer = document.getElementById("vocabulary-activity");
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         termDiv.classList.add("term");
 
         const termLabel = document.createElement("label");
-        termLabel.textContent = term;
+        termLabel.textContent = `${index + 1}. ${term}`;
         termDiv.appendChild(termLabel);
 
         const select = document.createElement("select");
@@ -36,11 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
 function checkAnswers() {
     const answers = [0, 1, 2, 3, 4, 5];
     let correct = true;
+    let incorrectQuestions = [];
 
     answers.forEach((answer, index) => {
         const select = document.getElementById(`term-${index}`);
         if (parseInt(select.value) !== answer) {
             correct = false;
+            incorrectQuestions.push(index + 1);
         }
     });
 
@@ -49,7 +51,7 @@ function checkAnswers() {
         resultDiv.textContent = "Correct! You've matched all the terms correctly.";
         resultDiv.style.color = "green";
     } else {
-        resultDiv.textContent = "Some answers are incorrect. Try again!";
+        resultDiv.textContent = `Incorrect answers for question(s): ${incorrectQuestions.join(", ")}. Try again!`;
         resultDiv.style.color = "red";
     }
 }
