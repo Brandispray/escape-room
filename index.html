@@ -9,12 +9,25 @@
 <body>
     <div class="container">
         <h1>Welcome to the Escape Room</h1>
-        <div id="puzzle">
-            <!-- Puzzle content will go here -->
+        <div id="timer">Time left: <span id="time">10:00</span></div>
+        
+        <div id="puzzle1" class="puzzle">
+            <p>Solve the riddle: "What has keys but can't open locks?"</p>
+            <input type="text" id="answer1" placeholder="Enter your answer">
+            <button onclick="checkAnswer1()">Submit</button>
+            <div id="result1"></div>
+            <button onclick="showHint1()">Hint for Puzzle 1</button>
+            <div id="hint1" class="hint" style="display:none;">
+                <p>It’s a musical instrument.</p>
+            </div>
         </div>
-        <input type="text" id="answer" placeholder="Enter your answer here">
-        <button onclick="checkAnswer()">Submit</button>
-        <div id="result"></div>
+        
+        <div id="puzzle2" class="puzzle" style="display:none;">
+            <p>Solve the math problem: 12 + 15 - 5 = ?</p>
+            <input type="text" id="answer2" placeholder="Enter your answer">
+            <button onclick="checkAnswer2()">Submit</button>
+            <div id="result2"></div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
