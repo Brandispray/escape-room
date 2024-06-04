@@ -7,6 +7,14 @@ function checkRiddle() {
         setTimeout(() => {
             window.location.href = "dragdrop.html"; // Next activity
         }, 2000);
+
+        // Backup navigation button
+        const nextButton = document.createElement("button");
+        nextButton.textContent = "Next";
+        nextButton.onclick = () => {
+            window.location.href = "dragdrop.html";
+        };
+        resultElement.appendChild(nextButton);
     } else {
         resultElement.textContent = "Incorrect. Try again!";
         resultElement.style.color = "red";
