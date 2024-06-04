@@ -50,6 +50,9 @@ function checkAnswers() {
     if (correct) {
         resultDiv.textContent = "Correct! You've matched all the terms correctly.";
         resultDiv.style.color = "green";
+        setTimeout(() => {
+            window.location.href = "riddle.html"; // Next activity
+        }, 2000);
     } else {
         resultDiv.textContent = `Incorrect answers for question(s): ${incorrectQuestions.join(", ")}. Try again!`;
         resultDiv.style.color = "red";
