@@ -3,31 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escape Room</title>
+    <title>Figurative Language Escape Room</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the Escape Room</h1>
-        <div id="timer">Time left: <span id="time">10:00</span></div>
-        
-        <div id="puzzle1" class="puzzle">
-            <p>Solve the riddle: "What has keys but can't open locks?"</p>
-            <input type="text" id="answer1" placeholder="Enter your answer">
-            <button onclick="checkAnswer1()">Submit</button>
-            <div id="result1"></div>
-            <button onclick="showHint1()">Hint for Puzzle 1</button>
-            <div id="hint1" class="hint" style="display:none;">
-                <p>It’s a musical instrument.</p>
-            </div>
-        </div>
-        
-        <div id="puzzle2" class="puzzle" style="display:none;">
-            <p>Solve the math problem: 12 + 15 - 5 = ?</p>
-            <input type="text" id="answer2" placeholder="Enter your answer">
-            <button onclick="checkAnswer2()">Submit</button>
-            <div id="result2"></div>
-        </div>
+        <h1>Welcome to the Figurative Language Escape Room!</h1>
+        <p>In this escape room, you'll complete a series of activities to learn and review figurative language. Follow the instructions for each activity and solve the puzzles to advance. If you need help, use the hints provided.</p>
+        <button onclick="startActivity()">Start</button>
     </div>
     <script src="script.js"></script>
 </body>
