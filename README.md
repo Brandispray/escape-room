@@ -7,7 +7,7 @@ Welcome to the Figurative Language Escape Room! This interactive educational too
 The escape room is divided into three levels, each focusing on different aspects of figurative language:
 1. **Level 1 - Flashcards**: Review and read through flashcards.
 2. **Level 2 - Multiple Choice**: Answer multiple choice questions to identify types of figurative language.
-3. **Level 3 - Interactive Image Map**: Identify figurative language in an interactive image map.
+3. **Level 3 - Drag and Drop**: Drag sentences to the correct figurative language category.
 
 ## Setup Instructions
 
@@ -16,7 +16,7 @@ The escape room is divided into three levels, each focusing on different aspects
    - Save the provided images in the project directory.
 
 2. **File Structure**:
- /project-directory
+/project-directory
 
 ├── index.html
 
@@ -28,7 +28,7 @@ The escape room is divided into three levels, each focusing on different aspects
 
 ├── level2_complete.html
 
-├── level3_imagemap.html
+├── level3_dragdrop.html
 
 ├── level3_complete.html
 
@@ -53,7 +53,7 @@ The escape room is divided into three levels, each focusing on different aspects
 └── reward_badge.png
 
 
-4. **Open the Project**:
+3. **Open the Project**:
 - Open `index.html` in your web browser to start the escape room.
 
 ## Usage Instructions
@@ -69,9 +69,11 @@ The escape room is divided into three levels, each focusing on different aspects
 - Answer the multiple choice questions to identify the type of figurative language.
 - Receive immediate feedback and progress through all questions to complete Level 2.
 
-4. **Level 3 - Interactive Image Map**:
-- Click on the correct areas of the interactive image map to identify the figurative language.
-- Receive feedback on your selections and progress through the questions to complete Level 3.
+4. **Level 3 - Drag and Drop**:
+- Drag each sentence to the correct figurative language category.
+- If a sentence is correctly categorized, it will stay in the drop zone.
+- If a sentence is incorrectly categorized, you will receive a message to try again and it will be returned to the main list.
+- Progress through all sentences to complete Level 3.
 
 5. **Completion**:
 - After completing all levels, receive a congratulatory message and a reward badge.
@@ -88,3 +90,4 @@ This project is licensed under the MIT License. See the LICENSE file for details
 ---
 
 Enjoy the Figurative Language Escape Room and happy learning!
+
