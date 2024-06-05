@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3 - Interactive Image Map</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Level 3: Identify Figurative Language in the Image</h1>
+        <img src="imagemap.jpg" alt="Interactive Image Map" usemap="#figMap">
+        <map name="figMap">
+            <area shape="rect" coords="34,44,270,350" alt="Simile" onclick="checkAnswer('simile')">
+            <area shape="rect" coords="290,172,333,250" alt="Metaphor" onclick="checkAnswer('metaphor')">
+            <area shape="rect" coords="337,300,444,450" alt="Personification" onclick="checkAnswer('personification')">
+            <area shape="rect" coords="450,44,600,350" alt="Hyperbole" onclick="checkAnswer('hyperbole')">
+        </map>
+        <div id="result"></div>
+        <div id="progress">Question 1 of 4</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
