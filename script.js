@@ -9,7 +9,7 @@ function startNextLevel() {
     if (currentLevel === 1) {
         window.location.href = "level2_multiplechoice.html";
     } else if (currentLevel === 2) {
-        window.location.href = "level3_imagemap.html";
+        window.location.href = "level3_dragdrop.html";
     }
 }
 
@@ -81,7 +81,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const questions = [
             { question: "The classroom was a zoo.", correct: "metaphor" },
             { question: "He is as brave as a lion.", correct: "simile" },
-            { question: "The wind whispered through the trees.", correct: "personification" }
+            { question: "The wind whispered through the trees.", correct: "personification" },
+            { question: "I'm so hungry I could eat a horse.", correct: "hyperbole" },
+            { question: "She has a heart of stone.", correct: "metaphor" },
+            { question: "The stars danced playfully in the moonlit sky.", correct: "personification" },
+            { question: "Time flies when you're having fun.", correct: "idiom" },
+            { question: "The thunder grumbled like an old man.", correct: "simile" }
         ];
 
         let currentQuestion = 0;
@@ -97,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button onclick="checkAnswer('metaphor', ${index})">Metaphor</button>
                 <button onclick="checkAnswer('personification', ${index})">Personification</button>
                 <button onclick="checkAnswer('hyperbole', ${index})">Hyperbole</button>
+                <button onclick="checkAnswer('idiom', ${index})">Idiom</button>
             `;
             progress.textContent = `Question ${index + 1} of ${questions.length}`;
         }
@@ -124,41 +130,93 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Interactive Image Map Activity
+// Drag and Drop Activity
 document.addEventListener("DOMContentLoaded", () => {
-    if (window.location.pathname.endsWith("level3_imagemap.html")) {
-        let correctAnswers = ["simile", "metaphor", "personification", "hyperbole"];
-        let answers = [];
+    if (window.location.pathname.endsWith("level3_dragdrop.html")) {
+        const sentences = [
+            { text: "He is as brave as a lion.", type: "simile" },
+            { text: "The classroom was a zoo.", type: "metaphor" },
+            { text: "The wind whispered through the trees.", type: "personification" },
+            { text: "I'm so hungry I could eat a horse.", type: "hyperbole" },
+            { text: "Her smile was a ray of sunshine.", type: "metaphor" },
+            { text: "The leaves danced in the wind.", type: "personification" },
+            { text: "He runs like the wind.", type: "simile" },
+            { text: "I have a ton of homework.", type: "hyperbole" }
+        ];
 
-        window.checkAnswer = (answer) => {
-            answers.push(answer);
-            const result = document.getElementById("result");
-            const progress = document.getElementById("progress");
-            progress.textContent = `Question ${answers.length} of ${correctAnswers.length}`;
-
-            if (answers.length === correctAnswers.length) {
-                let correct = true;
-                for (let i = 0; i < correctAnswers.length; i++) {
-                    if (answers[i] !== correctAnswers[i]) {
-                        correct = false;
-                        result.textContent = `Incorrect answers for question(s): ${i + 1}. Try again!`;
-                        result.style.color = "red";
-                        break;
-                    }
-                }
-                if (correct) {
-                    result.textContent = "Correct! You've identified all the figurative language correctly.";
-                    result.style.color = "green";
-                    setTimeout(() => {
-                        window.location.href = "level3_complete.html";
-                    }, 2000);
-                } else {
-                    answers = [];
-                }
-            }
+        const dropzones = {
+            simile: document.getElementById("simile-zone"),
+            metaphor: document.getElementById("metaphor-zone"),
+            personification: document.getElementById("personification-zone"),
+            hyperbole: document.getElementById("hyperbole-zone")
         };
+
+        const sentenceContainer = document.getElementById("sentences");
+        sentences.forEach((sentence, index) => {
+            const sentenceDiv = document.createElement("div");
+            sentenceDiv.classList.add("sentence");
+            sentenceDiv.id = `sentence-${index}`;
+            sentenceDiv.textContent = sentence.text;
+            sentenceDiv.draggable = true;
+            sentenceDiv.ondragstart = (event) => {
+                event.dataTransfer.setData("text", event.target.id);
+            };
+            sentenceContainer.appendChild(sentenceDiv);
+        });
+
+        for (let zone in dropzones) {
+            dropzones[zone].ondragover = (event) => event.preventDefault();
+            dropzones[zone].ondrop = (event) => {
+                event.preventDefault();
+                const data = event.dataTransfer.getData("text");
+                const sentenceDiv = document.getElementById(data);
+                const sentence = sentences.find(s => s.text === sentenceDiv.textContent);
+                if (sentence.type === zone) {
+                    dropzones[zone].appendChild(sentenceDiv);
+                } else {
+                    document.getElementById("result").textContent = "Incorrect. Try again!";
+                    sentenceContainer.appendChild(sentenceDiv);
+                }
+            };
+        }
     }
 });
+
+function submitAnswers() {
+    const correctAnswers = {
+        "sentence-0": "simile-zone",
+        "sentence-1": "metaphor-zone",
+        "sentence-2": "personification-zone",
+        "sentence-3": "hyperbole-zone",
+        "sentence-4": "metaphor-zone",
+        "sentence-5": "personification-zone",
+        "sentence-6": "simile-zone",
+        "sentence-7": "hyperbole-zone"
+    };
+    let correct = true;
+    let incorrectQuestions = [];
+
+    for (let sentenceId in correctAnswers) {
+        const sentenceDiv = document.getElementById(sentenceId);
+        const parentElement = sentenceDiv.parentElement;
+        if (parentElement.id !== correctAnswers[sentenceId]) {
+            correct = false;
+            incorrectQuestions.push(sentenceDiv.textContent);
+        }
+    }
+
+    const resultDiv = document.getElementById("result");
+    if (correct) {
+        resultDiv.textContent = "Correct! You've categorized all the sentences correctly.";
+        resultDiv.style.color = "green";
+        setTimeout(() => {
+            window.location.href = "level3_complete.html";
+        }, 2000);
+    } else {
+        resultDiv.textContent = `Incorrect sentences: ${incorrectQuestions.join(", ")}. Try again!`;
+        resultDiv.style.color = "red";
+    }
+}
 
 // Completion Page
 function startOver() {
