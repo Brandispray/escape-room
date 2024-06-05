@@ -24,3 +24,21 @@ button {
     cursor: pointer;
     margin-top: 20px;
 }
+
+.flashcard, .category, .phrase {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.flashcard h2, .flashcard p {
+    margin: 0;
+}
+
+#progress {
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #555;
+}
