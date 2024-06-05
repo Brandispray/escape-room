@@ -9,9 +9,30 @@
 <body>
     <div class="container">
         <h1>Figurative Language Drag and Drop</h1>
-        <p>Match the idioms with their correct meanings by dragging and dropping.</p>
+        <p>Drag the phrases to the correct category.</p>
         <div id="dragdrop-activity">
-            <!-- Drag and Drop activity will be injected here by JavaScript -->
+            <div class="category" id="simile-category">
+                <img src="simile.jpg" alt="Simile">
+                <p>Simile</p>
+            </div>
+            <div class="category" id="metaphor-category">
+                <img src="metaphor.jpg" alt="Metaphor">
+                <p>Metaphor</p>
+            </div>
+            <div class="category" id="personification-category">
+                <img src="personification.jpg" alt="Personification">
+                <p>Personification</p>
+            </div>
+            <div class="category" id="hyperbole-category">
+                <img src="hyperbole.jpg" alt="Hyperbole">
+                <p>Hyperbole</p>
+            </div>
+        </div>
+        <div id="phrases">
+            <div class="phrase" draggable="true" id="phrase-1">"As busy as a bee."</div>
+            <div class="phrase" draggable="true" id="phrase-2">"The classroom was a zoo."</div>
+            <div class="phrase" draggable="true" id="phrase-3">"The wind whispered."</div>
+            <div class="phrase" draggable="true" id="phrase-4">"I could eat a horse."</div>
         </div>
         <button onclick="checkDragDrop()">Submit</button>
         <div id="result"></div>
